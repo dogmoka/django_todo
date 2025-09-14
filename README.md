@@ -42,9 +42,35 @@ models.pyを編集
 CRUDとdjango
 C:CreateView
 R:ListView DetailView ← Read（情報を読み取る）
+    ListView:データ一覧をリストとして表示することに適したテンプレート
+    DetailView:データの中身を表示することに適したテンプレート
 U:UpdateView
 D:DeleteView
 
 djangoのhtml
 {% %} 複雑な処理
 {{ }}　データ
+
+## day3
+DetailViewの追加
+⇒モデルの中から任意の一つを表示する
+⇒主キー(今回はID)をurlsで指定してあげる
+
+Bootstrap(version注意)
+フロントのフレームワーク
+CSSファイルが用意されている
+Starter templateｗコピペしてくる
+⇒そこに付け加える形で編集していく
+
+base.htmlの使いまわし
+どのhtmlファイルにも使う構文(枠組み)を一つにまとめておく
+枠組みは以下のように分けられる
+Block header
+Block content
+Block slidebar
+Block footer
+
+html内のobjectについて
+object は、～View で取得された1つのモデルインスタンス。
+テンプレート内で object.フィールド名 で値を表示。
+

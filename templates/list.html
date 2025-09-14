@@ -1,6 +1,25 @@
-{% for item in object_list %}
-<ul>
-<li></li>{{ item.title }}
-<li></li>{{ item.memo }}
-</ul>
-{% endfor %}
+<!-- base.htmlを使って書くことの宣言 -->
+{% extends "base.html" %}
+
+{% block header %}
+
+<div class="alert alert-dark" role="alert">
+    this is list
+</div>
+
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for item in object_list %}
+            <li>
+                <div class="alert alert-success" role="alert">
+                    {{ item.title }}
+                </div>
+                <div class="alert alert-success" role="alert">
+                    A{{ item.memo }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
