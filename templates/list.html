@@ -2,24 +2,24 @@
 {% extends "base.html" %}
 
 {% block header %}
-
-<div class="alert alert-dark" role="alert">
-    this is list
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Todoリスト</h1>
+        <p class="lead">計画的にタスクを進めなさい</p>
+    </div>
 </div>
-
-{% endblock %}
+{% endblock header %}
 
 {% block content %}
-    <ul>
-        {% for item in object_list %}
-            <li>
-                <div class="alert alert-success" role="alert">
-                    {{ item.title }}
-                </div>
-                <div class="alert alert-success" role="alert">
-                    A{{ item.memo }}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+<div class = "container">
+    {% for item in object_list %}
+        <!-- itm.priorityはmodelのpriorityと連携している -->
+        <div class="alert alert-{{ item.priority }}" role="alert">
+            <p>{{ item.title }}</p>
+            <a href="#" class="btn btn-primary btn" tabindex="-1" role="button" aria-disabled="true">編集</a>
+            <a href="#" class="btn btn-danger btn" tabindex="-1" role="button" aria-disabled="true">削除</a>
+            <a href="#" class="btn btn-info btn" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}
