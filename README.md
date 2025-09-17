@@ -59,7 +59,7 @@ DetailViewの追加
 Bootstrap(version注意)
 フロントのフレームワーク
 CSSファイルが用意されている
-Starter templateｗコピペしてくる
+Starter templateをコピペしてくる
 ⇒そこに付け加える形で編集していく
 
 base.htmlの使いまわし
@@ -74,3 +74,21 @@ html内のobjectについて
 object は、～View で取得された1つのモデルインスタンス。
 テンプレート内で object.フィールド名 で値を表示。
 
+## day4
+見た目を整えていく
+list.htmlヘッダーはbotstrapのjumbotronを使う
+リスト部分はcontainerクラスで幅を整える
+⇒<div class="container"> は、BootstrapというCSSフレームワークでよく使われるクラスです。
+　役割
+　ページの内容（この場合はタスクリスト）を中央寄せにし、左右に余白を持たせて見やすく整えます。
+　レスポンシブデザイン（画面サイズに応じて自動調整）もサポートされます。
+　Bootstrapの「container」クラスを使うことで、全体のレイアウトがきれいに整います。
+bootstrapのLink functionality caveatを使ってボタンを作成
+色も編集btn-###の部分が色に関わる
+
+* ファビコンの追加を試みたが無理だった。。。
+
+優先度による色付けとタスクの作成時間の設定
+modelを作成してDBに項目を追加
+modelとcssを連携させる。
+⇒オブジェクト名と色を連携
