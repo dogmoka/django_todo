@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action ='' method="POST">
+    <!-- Djangoでフォームを使うときに「クロスサイトリクエストフォージェリ（CSRF）」という攻撃を防ぐためのセキュリティ用タグ -->
+    {% csrf_token %}
+    <!-- DjangoのフォームオブジェクトをHTMLの<p>タグで囲んだ形で自動的に出力するテンプレートタグ -->
+    {{ form.as_p }}
+<input type="submit" value="create">
+</form>
+{% endblock content%}

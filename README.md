@@ -92,3 +92,23 @@ bootstrapのLink functionality caveatを使ってボタンを作成
 modelを作成してDBに項目を追加
 modelとcssを連携させる。
 ⇒オブジェクト名と色を連携
+
+## day5
+CreateView：データを新しく作るときに適したテンプレート
+まずはurls.pyの編集
+views.pyを編集し、htmlファイルを作成
+    form はビューからテンプレートに渡されたDjangoフォームオブジェクトです。
+    .as_p は、そのフォームの各フィールドを <p>...</p> で囲んでHTMLとして表示するDjangoのメソッドです。
+    これにより、フォームの各入力欄やラベル、エラーメッセージが自動的に整形されて表示されます
+    {% csrf_token %} は、Djangoで安全にフォーム送信を行うために必ず必要なセキュリティ対策のタグです。
+urls.pyのurlに名前をつけてあげる
+
+DeleteView：データを削除するときに適したテンプレート
+UpdateView：更新をするときに適したテンプレート
+作成の手順はCreateViewと同じ
+
+urlの設定
+list.htmlを編集
+urls.pyにつけた名前を利用する
+{% url 'update' item.pk %}のように付け足す
+
