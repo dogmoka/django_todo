@@ -1,12 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action ='' method="POST">
-    {% csrf_token %}
-    {{ form.title }}
-    {{ form.memo }}
-    {{ form.priority }}
-    {{ form.duedate}}
-<input type="submit" value="update">
-</form>
-{% endblock content%}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0">Todoを編集</h4>
+        </div>
+        <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                {% endif %}
+
+                {{ form.as_p }}
+
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">更新</button>
+                    <a href="{% url 'list' %}" class="btn btn-secondary">キャンセル</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

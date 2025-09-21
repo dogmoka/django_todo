@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import include, path
-from .views import TodoList, TodoDetail, TodoCreate, TodoDelete, TodoUpdate
+from .views import TodoList, TodoDetail, TodoCreate, TodoDelete, TodoUpdate, todo_delete_direct
 
 urlpatterns = [
     # URLにname属性をつけておくと、テンプレートやViewで参照しやすくなる
@@ -10,4 +10,5 @@ urlpatterns = [
     path('create/', TodoCreate.as_view(), name='create'),
     path('delete/<int:pk>', TodoDelete.as_view(), name='delete'),
     path('update/<int:pk>', TodoUpdate.as_view(), name='update'),
+    path('delete_direct/<int:pk>/', todo_delete_direct, name='delete_direct'),
 ]
