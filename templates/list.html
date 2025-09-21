@@ -6,19 +6,45 @@
     <div class="container">
         <h1 class="display-4">Todoリスト</h1>
         <p class="lead">計画的にタスクを進めなさい</p>
+        <a href="{% url 'create' %}" class="btn btn-success btn" tabindex="-1" role="button" aria-disabled="true">新規作成</a>
     </div>
 </div>
 {% endblock header %}
 
 {% block content %}
 <div class = "container">
+<div class="mb-3">
+    <!-- ソートボタン -->
+    <div class="btn-group" role="group" aria-label="sort">
+        {% if current_sort == 'duedate' and current_order == 'asc' %}
+            <a href="?sort=duedate&order=desc" class="btn btn-secondary">期日 ↓</a>
+        {% else %}
+            <a href="?sort=duedate&order=asc" class="btn btn-secondary">期日 ↑</a>
+        {% endif %}
+
+        {% if current_sort == 'priority' and current_order == 'asc' %}
+            <a href="?sort=priority&order=desc" class="btn btn-secondary">優先度 ↓</a>
+        {% else %}
+            <a href="?sort=priority&order=asc" class="btn btn-secondary">優先度 ↑</a>
+        {% endif %}
+    </div>
+</div>
     {% for item in object_list %}
         <!-- itm.priorityはmodelのpriorityと連携している -->
-        <div class="alert alert-{{ item.priority }}" role="alert">
-            <p>{{ item.title }}</p>
-            <a href="{% url 'update' item.pk %}" class="btn btn-primary btn" tabindex="-1" role="button" aria-disabled="true">編集</a>
-            <a href="{% url 'delete' item.pk %}" class="btn btn-danger btn" tabindex="-1" role="button" aria-disabled="true">削除</a>
-            <a href="{% url 'detail' item.pk %}" class="btn btn-info btn" tabindex="-1" role="button" aria-disabled="true">詳細</a>
+        <div class="alert alert-{{ item.priority }} d-flex justify-content-between align-items-center" role="alert">
+            <div>
+                <h3 class="mb-1">{{ item.title }}</h3>
+                <small class="text-muted">期日：{{ item.duedate|date:"Y年n月j日" }}</small>
+            </div>
+
+            <div class="btn-group" role="group" aria-label="actions">
+                <a href="{% url 'detail' item.pk %}" class="btn btn-info">詳細</a>
+                <a href="{% url 'update' item.pk %}" class="btn btn-primary">編集</a>
+                <form action="{% url 'delete_direct' item.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn" onclick="return confirm('本当に削除しますか？');">削除</button>
+                </form>
+            </div>
         </div>
     {% endfor %}
 </div>
