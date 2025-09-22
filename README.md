@@ -6,6 +6,7 @@ python -m venv venv
 "source venv/Scripts/activate"　で仮想環境内に入る
 deactivate で出る
 
+venvの中に入って"install django"
 今回は初期設定で以下のコマンドを使う
 "django-admin startproject todoproject ."
 "."を入れると階層が一個減る
